@@ -17,6 +17,15 @@ app
 						$scope.sheetname = "csheet";
 					}; // end launch
 
+					// Add Row Funtion Calling
+					 $scope.addRow = function () {
+        					  updateRow();
+					};
+    					//Delete Row Funtion Calling 
+					  $scope.deleteRow = function(){
+						 deletingrow();
+					};
+
 					/* get sheet data on save button click */
 					$scope.saveScript = function() {
 						console.log("in controller");
