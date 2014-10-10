@@ -212,3 +212,33 @@ function displaySpread(sheetData, spread) {
 	filter.setShowFilterButton(false);
 	sheet.isPaintSuspended(false);
 }
+
+// Add row in active sheet
+function updateRow(){
+    temp++;
+    var spread = $("#ss").wijspread("spread");
+    spread.useWijmoTheme = true;
+    spread.tabStripVisible(false);
+    spread.showHorizontalScrollbar(false);
+    spread.showVerticalScrollbar(false);
+
+    var sheet = spread.getActiveSheet();
+    sheet.isPaintSuspended(false);
+    sheet.setRowCount(temp);
+    
+}
+
+//Delete row in active sheet
+function  deletingrow(){
+    temp--;
+    var spread = $("#ss").wijspread("spread");
+    spread.useWijmoTheme = true;
+    spread.tabStripVisible(false);
+    spread.showHorizontalScrollbar(false);
+    spread.showVerticalScrollbar(false);
+
+    var sheet = spread.getActiveSheet();
+    sheet.isPaintSuspended(false);
+    sheet.setRowCount(temp);
+}
+
