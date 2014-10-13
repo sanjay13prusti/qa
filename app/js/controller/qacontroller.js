@@ -190,6 +190,8 @@ function displaySpread(sheetData, spread) {
 	var rc = sheet.getRowCount();
 	var cc = sheet.getColumnCount();
 
+	var cellType2 = new $.wijmo.wijspread.ComboBoxCellType();
+	cellType2.items(["GET","POST"]);
 	/*
 	 * for (var r = 0; r < rc; r++) { for (var c = 0; c < cc; c++) { if (c == 0) {
 	 * sheet.setValue(r, c, "Value is Number"); } else { sheet.setValue(r, c, r +
@@ -200,8 +202,14 @@ function displaySpread(sheetData, spread) {
 	sheet.setValue(0, 0, "Test Case ID", $.wijmo.wijspread.SheetArea.colHeader);
 	sheet.setValue(0, 1, "Test Step", $.wijmo.wijspread.SheetArea.colHeader);
 	sheet.setValue(0, 2, "Request URL", $.wijmo.wijspread.SheetArea.colHeader);
-	sheet.setValue(0, 3, "Type (GET/POST)",
-			$.wijmo.wijspread.SheetArea.colHeader);
+	
+    	for (var r = 0; r < rc; r++) 
+    	{ 
+	      sheet.setValue(0, 3, "Type (GET/POST)",
+	      $.wijmo.wijspread.SheetArea.colHeader,
+	      sheet.getCell(r, 3).cellType(cellType2));     
+	} 
+//	sheet.setValue(0, 3, "Type (GET/POST)",	$.wijmo.wijspread.SheetArea.colHeader);
 	sheet.setValue(0, 4, "Expected Assertion",
 			$.wijmo.wijspread.SheetArea.colHeader);
 	sheet.setValue(0, 5, "Expected Value",
@@ -230,10 +238,20 @@ function updateRow(){
     spread.tabStripVisible(false);
     spread.showHorizontalScrollbar(false);
     spread.showVerticalScrollbar(false);
-
+    
     var sheet = spread.getActiveSheet();
     sheet.isPaintSuspended(false);
     sheet.setRowCount(temp);
+     var rc = sheet.getRowCount();
+    
+    var cellType2 = new $.wijmo.wijspread.ComboBoxCellType();
+    cellType2.items(["GET","POST"]);
+    for (var r = 0; r < rc; r++) 
+    { 
+          sheet.setValue(0, 3, "Type (GET/POST)",
+            $.wijmo.wijspread.SheetArea.colHeader,
+            sheet.getCell(r, 3).cellType(cellType2));     
+    } 
     
 }
 
