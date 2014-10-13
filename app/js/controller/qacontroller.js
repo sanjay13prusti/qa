@@ -255,9 +255,7 @@ function updateRow(){
     cellType2.items(["GET","POST"]);
     for (var r = 0; r < rc; r++) 
     { 
-          sheet.setValue(0, 3, "Type (GET/POST)",
-            $.wijmo.wijspread.SheetArea.colHeader,
-            sheet.getCell(r, 3).cellType(cellType2));     
+          sheet.getCell(r, 3).cellType(cellType2);     
     } 
     
 }
