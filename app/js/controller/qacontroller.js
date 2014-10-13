@@ -145,13 +145,20 @@ function createSpread(noOfRows, spread) {
 	sheet.setColumnCount(7);
 	var rc = sheet.getRowCount();
 	var cc = sheet.getColumnCount();
-
+	var cellType2 = new $.wijmo.wijspread.ComboBoxCellType();
+    	cellType2.items(["GET","POST"]);
+	
 	/* set column header name */
 	sheet.setValue(0, 0, "Test Case ID", $.wijmo.wijspread.SheetArea.colHeader);
 	sheet.setValue(0, 1, "Test Step", $.wijmo.wijspread.SheetArea.colHeader);
 	sheet.setValue(0, 2, "Request URL", $.wijmo.wijspread.SheetArea.colHeader);
-	sheet.setValue(0, 3, "Type (GET/POST)",
-			$.wijmo.wijspread.SheetArea.colHeader);
+	for (var r = 0; r < rc; r++) 
+    	{ 
+	      sheet.setValue(0, 3, "Type (GET/POST)",
+	      $.wijmo.wijspread.SheetArea.colHeader,
+	      sheet.getCell(r, 3).cellType(cellType2));     
+	} 
+//	sheet.setValue(0, 3, "Type (GET/POST)",$.wijmo.wijspread.SheetArea.colHeader);
 	sheet.setValue(0, 4, "Expected Assertion",
 			$.wijmo.wijspread.SheetArea.colHeader);
 	sheet.setValue(0, 5, "Expected Value",
